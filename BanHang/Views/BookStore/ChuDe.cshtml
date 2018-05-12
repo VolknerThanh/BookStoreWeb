@@ -1,0 +1,8 @@
+﻿@model IEnumerable<BanHang.Models.CHUDE>
+
+@foreach (var chude in Model)
+{
+    <li>
+        <a href="@Url.Action("SPTheoChude", "BookStore", new { id = chude.MaCD })">@chude.TenChuDe</a>
+    </li>
+}

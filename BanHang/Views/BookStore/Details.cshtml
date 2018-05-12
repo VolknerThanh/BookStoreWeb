@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<style>
+    #DatMua{
+        clear:both;
+        background-color:red;
+        width: 120px;
+        display:block;
+        float:right;
+        text-align:center;
+        font-weight:900;
+        padding: 1.2em 0.7em;
+        border-radius:5px;
+    }
+    #DatMua a{
+        color: white;
+        text-decoration:none;
+    }
+</style>
+
+<h2 style="margin: 1.2em 0; font-size:2em;">THÔNG TIN CHI TIẾT SÁCH</h2>
+
+<div>
+    <div style="width: 30%; float: left; border-left: dotted 1px; border-color:azure;">
+        <img src="../../img/@Model.Hinhminhhoa" width="100%" />
+    </div>
+    <div style="width: 60%; float: left; padding: 10px;">
+        <h4 style="font-weight:900; color: red; font-size:1.1em; margin-bottom:1.2em;">Tên sách: @Model.Tensach</h4>
+        <p style="text-align:justify;"><span style="font-weight: 900;">Mô tả:</span>@Model.Mota</p>
+        <p style="font-weight:900">Giá Bán: <span style="color:red; font-size: 16px">@Model.Dongia VNĐ</span></p>
+    </div>
+    <div>
+        <div id="DatMua">
+            <a href="@Url.Action("AddToCart", "Cart", new { @id = @Model.Masach, @strURL = Request.Url.ToString()})" onclick="alert('Đã đặt hàng thành công!');" class="list-group-item">
+                ĐẶT MUA
+            </a>
+        </div>
+    </div>
+</div>

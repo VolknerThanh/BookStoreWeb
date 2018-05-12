@@ -1,0 +1,81 @@
+﻿@*@model IEnumerable<BanHang.Models.SACH>*@
+@using BanHang.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SACH>
+
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h1 style="font-size: 250%; margin: 2em;">Nhan Kim Thành - 15DH110281 - Ca2</h1>
+
+@{ 
+    Html.RenderAction("Search", "BookStore");
+}
+
+<div class="products">
+    <div class="cl">&nbsp;</div>
+        <ul>
+            @foreach (var sach in Model)
+            {
+                <li>
+                    <a href="@Url.Action("Details","BookStore", new {id = sach.Masach})">
+                        <img alt="@sach.Tensach" title="@sach.Mota" style="width:100%" src="../../img/@sach.Hinhminhhoa" />
+                        @*<span>@sach.Tensach</span>*@
+                    
+                        <div class="product-info">
+                            <h3>@sach.Tensach</h3>
+                            <div class="product-desc">
+                                <script>
+                                    function RutGon(data) {
+                                        var count = 0;
+                                        var thisStr = "";
+                                        if (data != null || data != "") {
+                                            for (var i = 0; i < data.length; i++) {
+                                                if (count < 50) {
+                                                    thisStr += data[i];
+                                                    count++;
+                                                }
+                                            }
+                                        }
+                                        return thisStr + "...";
+                                    }
+                                </script>
+                                <span>
+                                    <script> document.write( RutGon(`@sach.Mota`));</script>
+                                </span>
+                                <strong class="price">@sach.Dongia</strong>
+                            </div>
+                        </div>
+                     </a>
+                </li>
+            }
+        </ul>
+    <div class="cl">&nbsp;</div>
+</div>
+
+    <div style="margin: 1em;">
+        <span style="font-size: 1.5em;">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</span>
+
+        <div class="menuNay">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+        </div>
+    </div>
+    <style>
+        .menuNay{
+            margin:1em;
+            font-size:120%;
+        }
+        .menuNay li {
+            padding: 0.5em 1em;
+            border: 1px solid black;
+            display: inline;
+        }
+        .menuNay li.active{
+            background-color: black;
+        }
+        .menuNay li.active a{
+            color: white!important;
+        }
+    </style>

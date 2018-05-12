@@ -1,0 +1,8 @@
+﻿@model IEnumerable<BanHang.Models.NHAXUATBAN>
+
+@foreach (var nhaxuatban in Model)
+{
+    <li>
+        <a href="@Url.Action("SPTheoNSX", "BookStore", new { id = nhaxuatban.MaNXB })">@nhaxuatban.TenNXB</a>
+    </li>
+}

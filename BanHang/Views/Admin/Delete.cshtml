@@ -1,0 +1,112 @@
+﻿@model BanHang.Models.SACH
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XÁC NHẬN THÔNG TIN SÁCH CẦN XÓA</h2>
+
+<div style="margin: 1.5em 0;">
+    <h3>Bạn có chắc muốn xóa thông tin của sách này ?</h3>
+</div>
+
+<style>
+    td {
+        min-width: 100px;
+        padding: 0.5em;
+    }
+
+    #BookDetailsTitle {
+        font-weight: 700;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <table>
+            <tr>
+                <td id="BookDetailsTitle">Tên Sách:</td>
+                <td>
+                    @Html.DisplayFor(model => model.Tensach)
+                </td>
+            </tr>
+            <tr>
+                <td id="BookDetailsTitle">Đơn vị tính:</td>
+                <td>
+                    @Html.DisplayFor(model => model.Donvitinh)
+                </td>
+            </tr>
+            <tr>
+                <td id="BookDetailsTitle">Đơn giá:</td>
+                <td>
+                    @Html.DisplayFor(model => model.Dongia)
+                </td>
+            </tr>
+            <tr>
+                <td id="BookDetailsTitle">Mô tả:</td>
+                <td>
+                    @Html.DisplayFor(model => model.Mota)
+                </td>
+            </tr>
+            <tr>
+                <td id="BookDetailsTitle">Hình minh họa:</td>
+                <td>
+
+                    <img src="@Url.Content("../../img/" + @Html.DisplayFor(model => model.Hinhminhhoa))" width="200px" height="220px" />
+
+                </td>
+            </tr>
+            <tr>
+                <td id="BookDetailsTitle">Chủ đề:</td>
+                <td>
+                    @Html.DisplayFor(model => model.CHUDE.TenChuDe)
+                </td>
+            </tr>
+            <tr>
+                <td id="BookDetailsTitle">Nhà xuất bản:</td>
+                <td>
+                    @Html.DisplayFor(model => model.NHAXUATBAN.TenNXB)
+                </td>
+            </tr>
+            <tr>
+                <td id="BookDetailsTitle">Ngày cập nhật:</td>
+                <td>
+                    @Html.DisplayFor(model => model.Ngaycapnhat)
+                </td>
+            </tr>
+            <tr>
+                <td id="BookDetailsTitle">Số lượng bán:</td>
+                <td>
+                    @Html.DisplayFor(model => model.Soluongban)
+                </td>
+            </tr>
+            <tr>
+                <td id="BookDetailsTitle">Số lần xem:</td>
+                <td>
+                    @Html.DisplayFor(model => model.solanxem)
+                </td>
+            </tr>
+            <tr>
+                <td id="BookDetailsTitle">Moi:</td>
+                <td>
+                    @Html.DisplayFor(model => model.moi)
+                </td>
+            </tr>
+
+        </table>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa sách này" class="btn btn-default" /> |
+            @Html.ActionLink("TRỞ VỀ", "Sach")
+        </div>
+    }
+</div>
